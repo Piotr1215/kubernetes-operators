@@ -4,6 +4,7 @@
 
 ## Resources
 
+- [Kuberneted docs opetator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 - [CNCF Opetarots WhitePaper](https://github.com/cncf/tag-app-delivery/blob/master/operator-wg/whitepaper/Operator-WhitePaper_v1-0.md#)
 - [CNCF Blog controller for pod labels](https://kubernetes.io/blog/2021/06/21/writing-a-controller-for-pod-labels/)
 - [Great video](https://www.youtube.com/watch?v=08O9eLJGQRM&ab_channel=CloudNativeSkunkworks) explaining operators
