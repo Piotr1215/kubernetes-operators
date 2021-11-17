@@ -1,5 +1,20 @@
 # Writing a Kubernetes operator
 
+## Prerequisites
+
+This is a self-contained development environment where you can play around with creating an operator using kubebuilder and Go.
+
+Alternativelly, you can try and excellent [Katacoda scenario](https://www.katacoda.com/javajon/courses/kubernetes-extensibility/kubebuilder) by [@javajon](https://github.com/javajon)
+
+If you decided to use this repository, there are a few prerequisites:
+
+- VS Code with [Remote Development Extensions](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+- Docker Desktop with Kubernetes enabled. If you have other kubernetes clusters in your config file, make sure to point to docker-desktop
+
+> I've tested it with remote cluster and it works too, but doesn't work with k3s/k3d.
+
+The image will take a while to load as it pulls kubebuilder, Go binaries and other components, so please patient :watch:
+
 ## Operator component architecture
 
 ## Resources
