@@ -13,3 +13,4 @@
 - [Intro to opetators IBM](https://developer.ibm.com/articles/how-operators-extend-kubernetes-functionality/)
 - [Medium build operator with Go](https://betterprogramming.pub/building-a-highly-available-kubernetes-operator-using-golang-fe4a44c395c2)
 - [Medium Kubernetes operator by example](https://codeburst.io/kubernetes-operators-by-example-99a77ea4ac43)
+- [Git Awesome opetator frameworks](https://github.com/pperzyna/awesome-operator-frameworks)
