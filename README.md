@@ -27,6 +27,27 @@ The image will take a while to load as it pulls kubebuilder, Go binaries and oth
 
 ```plantuml
 @startuml operator-components
+'Icons
+''!include <kubernetes/k8s-sprites-unlabeled-25pct>
+!theme spacelab
+
+skinparam componentStyle rectangle
+'mainframe **Operator Components**
+rectangle " " as operator {
+
+    component "Custom Resource" as custom_resource
+    component "CRD" as crd
+    component "Controller" as controller
+
+}
+
+@enduml
+```
+
+## Maturity model
+
+```plantuml
+@startuml operator-maturity-model
 !theme spacelab
 
 skinparam nodesep 10
