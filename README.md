@@ -15,7 +15,76 @@ If you decided to use this repository, there are a few prerequisites:
 
 The image will take a while to load as it pulls kubebuilder, Go binaries and other components, so please patient :watch:
 
+## Expand on those
+
+- operator pattern
+- controller vs operator
+- helm vs operator
+- 5 levels on operator maturity
+- Operatorhub.io
+
 ## Operator component architecture
+
+```plantuml
+@startuml operator-components
+!theme spacelab
+
+skinparam nodesep 10
+skinparam componentStyle rectangle
+skinparam defaultTextAlignment left
+'skinparam lineType ortho
+
+rectangle "Operator Levels" as levels {
+
+    component "Basic Install    " as level1
+    note bottom
+     **Helm, Ansible, Go**
+     - Simple installation
+     - Configuration
+    end note
+
+    component "Seamless Upgrades" as level2
+    note bottom
+     **Helm, Ansible, Go**
+     - Version upgrades
+     - Patches
+    end note
+
+    component "Full Lifecylce   " as level3
+    note bottom
+     **Ansible, Go**
+     - App lifecycle
+     - Storage
+     - Backup
+     - Recovery
+    end note
+
+    component "Deep Insights    " as level4
+    note bottom
+     **Ansible, Go**
+     - Observability
+     - Metrics
+     - Logging
+     - Telemetry
+    end note
+
+    component "Autopilot        " as level5
+    note bottom
+     **Ansible, Go**
+     - Auto-scaling
+     - Live configuration tuning
+     - Anomaly detection and remediation
+     - Finegraned node scheduling tuning
+    end note
+
+}
+
+level1 -[thickness=16]> level2
+level2 -[thickness=16]> level3
+level3 -[thickness=16]> level4
+level4 -[thickness=16]> level5
+@enduml
+```
 
 ## Resources
 
@@ -29,3 +98,4 @@ The image will take a while to load as it pulls kubebuilder, Go binaries and oth
 - [Medium build operator with Go](https://betterprogramming.pub/building-a-highly-available-kubernetes-operator-using-golang-fe4a44c395c2)
 - [Medium Kubernetes operator by example](https://codeburst.io/kubernetes-operators-by-example-99a77ea4ac43)
 - [Git Awesome opetator frameworks](https://github.com/pperzyna/awesome-operator-frameworks)
+- [TGIK 040: Kubebuilder](https://www.youtube.com/watch?v=N-lTSk1bGAg&t=3299s&ab_channel=Heptio)

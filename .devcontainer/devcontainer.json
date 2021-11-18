@@ -22,7 +22,10 @@
 	"extensions": [
 		"ms-azuretools.vscode-docker",
 		"ms-kubernetes-tools.vscode-kubernetes-tools",
-		"golang.go"
+		"golang.go",
+		"redhat.vscode-didact",
+		"coderoad.coderoad",
+		"github.classroom"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
