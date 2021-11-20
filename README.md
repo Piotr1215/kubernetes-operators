@@ -12,7 +12,7 @@ Kubernetes is designed as a platform to build platforms and operators are the ul
 
 ## Kubernetes Architecture
 
-Before we dive start learning about operators, let's get a quick refresher on Kubernetes architecture:
+Before we start learning about operators, let's get a quick refresher on Kubernetes architecture:
 
 ```plantuml
 @startuml k8s-architecture
@@ -86,7 +86,7 @@ Some of the controllers on the diagram are:
 - controller manager which manages all the Kubernetes native control loops
 - cloud controller which enables cloud providers to plug in their infrastructure elements
 
-## Operator Pattern
+## Operators Overview
 
 Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/). In simple terms operator pattern automates operations performed typically by humans, such as:
 
@@ -97,17 +97,7 @@ Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/co
 - gathering metrics
 - troubleshooting
 
-### Controller vs operator
-
-What is the difference between controllers and operators? Well, there is no technical difference, but rather in semantics.
-
-> Controller is a control loop continuously watching and reconciling state of the cluster. Operator is also a controller, but it additionally encapsulates specific domain knowledge.
-
-- helm vs operator
-- 5 levels on operator maturity
-- Operatorhub.io
-
-### Operator component architecture
+### Architecture
 
 ```plantuml
 @startuml operator-components
@@ -122,13 +112,18 @@ rectangle " " as operator {
     component "Custom Resource" as custom_resource
     component "CRD" as crd
     component "Controller" as controller
+    component "Deployment" as deployment
 
 }
 
 @enduml
 ```
 
-### Operator maturity levels
+### Maturity levels
+
+Operators can be as simple as installing components onto a cluster up to much more complex, like full life cycle management or even performance of configuration fine tuning live as the application runs.
+
+There are 5 levels of operator maturity:
 
 ```plantuml
 @startuml operator-maturity-model
@@ -191,19 +186,47 @@ level4 -[thickness=16]> level5
 @enduml
 ```
 
-### When to use operators
+## Operators in practice
 
 Should you start writing operators for everything? Obviously no, so when should you? Here are a few good use cases for operators
 
-TODO: Operator use cases
+- updating/upgrading stateful workloads
+- interacting with external resources outside of a Kubernetes cluster
+- chaos engineering
+- advanced scheduling, configuration and failure resiliency
+
+Writing and maintaining an operator is a very complex process, you need:
+- deep understanding of Kubernetes internals
+- expertise in any programming language (preferably Go)
+- strong grasp on concepts like "eventual consistency", "loose coupling", "event driven architecture"
+
+> Before looking into creating your own operator, make sure to visit [operator hub](operatorhub.io). There is a chance that the software you are using already has an operator.
+
+
+### Controller vs operator
+
+What is the difference between controllers and operators? Well, there is no technical difference, but rather in semantics.
+
+> Controller is a control loop continuously watching and reconciling state of the cluster. Operator is also a controller, but it additionally encapsulates specific domain knowledge.
+
+
+### Helm vs operator
+
+If you look closer at what an operator is doing, it looks a lot like [helm](https://helm.sh/), at least from packaging point of view. 
+
+> Whenever a question comes to "A vs B", it is usually a good heuristics to rephrase it into "When is it more appropriate to use A and when B"
+
+Similarly here, helm is great for simple installation and templating, but operator can do custom logic on the resources which helm simply was not designed for.
 
 ## Demo scenario
 
 ### Prerequisites
 
-This is a self-contained development environment where you can play around with creating an operator using kubebuilder and Go.
+There are a few choices if you would like to experiment with operators.
 
-Alternatively, you can try and excellent [Katacoda scenario](https://www.katacoda.com/javajon/courses/kubernetes-extensibility/kubebuilder) by [@javajon](https://github.com/javajon)
+- my repository with a self-contained development environment where you can play around with creating an operator using kubebuilder and Go.
+
+- an excellent [Katacoda scenario](https://www.katacoda.com/javajon/courses/kubernetes-extensibility/kubebuilder) by [@javajon](https://github.com/javajon)
 
 If you decided to use this repository, there are a few prerequisites:
 
