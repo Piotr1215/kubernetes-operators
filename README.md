@@ -16,70 +16,8 @@ In this article we will look at operator pattern, learn when it is appropriate t
 
 Before we start learning about operators, let's get a quick refresher on Kubernetes architecture:
 
-```plantuml
-@startuml k8s-architecture
-'Icons
-!include <kubernetes/k8s-sprites-labeled-25pct>
-'Global Styles
-!include https://raw.githubusercontent.com/Piotr1215/dca-prep-kit/master/diagrams/styles.iuml
-
-rectangle "            <$master>\nKubernetes Architecture"
-
-rectangle  "Control Plane" as ctrl {
-    collections "<$etcd>" as etcd
-    collections "<$sched>" as sched
-    collections "<$api>" as api
-    collections "<$c_m>" as cm
-    collections "<$c_c_m>" as ccm
-    api -> cm
-    api .> ccm
-    api -> sched
-    api -> etcd
-}
-
-rectangle "Nodes" as nodes {
-    node "Node" as node1 {
-        component "<$kubelet>" as 1
-        component "<$k_proxy>" as 2
-        1 -[hidden]--> 2
-    }
-    node "Node" as node2 {
-        component "<$kubelet>" as 3
-        component "<$k_proxy>" as 4
-        3 -[hidden]--> 4
-    }
-    node "Node" as node3 {
-        component "<$kubelet>" as 5
-        component "<$k_proxy>" as 6
-        5 -[hidden]--> 6
-    }
-}
-
-cloud "Cloud Provider\n API" as cloud
-
-ctrl -[hidden]r-> nodes
-ccm -> cloud
-
-1 -> api
-2 -> api
-3 -> api
-4 -> api
-5 -> api
-6 -> api
-
-legend bottom
- |= Component |= Description |= Function  |
- |     <$etcd>  | Perisstent store | Key-value backing store for all \n cluster data |
- |     <$sched> | Scheduler | Watches for pods and assigns \n them to nodes |
- |     <$api>   | Kube API server | Exposes Kubernetes API,\n front end for control plane |
- |     <$c_m>   | Controller manager | Node Controller, Replication Controller, \n Endpoints Controller, \n Service Account & Token Controllers |
- |     <$c_c_m> | Cloud controller manager\n optional | Embeds cloud specific control logic |
- |     <$kubelet> | Kubelet | Responsible for runnning \n containers in a pod |
- |     <$k_proxy> | Kube proxy | Maintains network rules on nodes |
-endlegend
-
-@enduml
-```
+![k8s-architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-oparators/master/diagrams/kubernetes-architecture.puml&fmt=png)
+<p style="text-align: center;"><small>Kubernetes Architecture</small></p>
 
 Internally Kubernetes architecture uses [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) in closed **control loops** to ensure cluster health and correctness of the workloads by continuously reconciling **actual** state of the cluster with the **desired** state specified by the user/administrator.
 
@@ -101,31 +39,15 @@ Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/co
 
 ### Architecture
 
-```plantuml
-@startuml operator-components
-'Icons
-'!include <kubernetes/k8s-sprites-unlabeled-25pct>
-!theme spacelab
-
-skinparam componentStyle rectangle
-'mainframe **Operator Components**
-rectangle " " as operator {
-
-    component "Custom Resource" as custom_resource
-    component "CRD" as crd
-    component "Controller" as controller
-    component "Deployment" as deployment
-
-}
-
-@enduml
-```
+![operator-components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-oparators/master/diagrams/operator-components.puml&fmt=png)
 
 ### Maturity levels
 
 Operators can be as simple as installing components onto a cluster up to much more complex, like full life cycle management or even performance of configuration fine tuning live as the application runs.
 
 There are 5 levels of operator maturity:
+
+![maturity-levels](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-oparators/master/diagrams/operator-levels.puml&fmt=png)
 
 ```plantuml
 @startuml operator-maturity-model
