@@ -16,7 +16,7 @@ In this article we will look at operator pattern, learn when it is appropriate t
 
 Before we start learning about operators, let's get a quick refresher on Kubernetes architecture:
 
-![k8s-architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-oparators/master/diagrams/kubernetes-architecture.puml&fmt=png)
+![k8s-architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/kubernetes-architecture.puml&fmt=png)
 <p style="text-align: center;"><small>Kubernetes Architecture</small></p>
 
 Internally Kubernetes architecture uses [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) in closed **control loops** to ensure cluster health and correctness of the workloads by continuously reconciling **actual** state of the cluster with the **desired** state specified by the user/administrator.
@@ -39,7 +39,7 @@ Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/co
 
 ### Architecture
 
-![operator-components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-oparators/master/diagrams/operator-components.puml&fmt=png)
+![operator-components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/operator-components.puml&fmt=png)
 
 ### Maturity levels
 
