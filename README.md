@@ -10,6 +10,8 @@ The usage of tools like Kubernetes is only going to increase. There is a differe
 
 Kubernetes is designed as a platform to build platforms and operators are the ultimate extensibility tools.
 
+In this article we will look at operator pattern, learn when it is appropriate to use an operator. Finally we will explore operator's component architecture.
+
 ## Kubernetes Architecture
 
 Before we start learning about operators, let's get a quick refresher on Kubernetes architecture:
@@ -218,15 +220,19 @@ If you look closer at what an operator is doing, it looks a lot like [helm](http
 
 Similarly here, helm is great for simple installation and templating, but operator can do custom logic on the resources which helm simply was not designed for.
 
-## Demo scenario
+## Tooling
 
-### Prerequisites
+There is a lot of operator frameworks, SDKs and related tooling, but I recommend looking at **[kubebuilder](https://github.com/kubernetes-sigs/kubebuilder)**, also available in the form of an [online book](https://book.kubebuilder.io/).
 
-There are a few choices if you would like to experiment with operators.
+> Please refer to the last section of this blog "Resources" where you can find more information about available tools.
 
-- my repository with a self-contained development environment where you can play around with creating an operator using kubebuilder and Go.
+### Demo scenarios
 
-- an excellent [Katacoda scenario](https://www.katacoda.com/javajon/courses/kubernetes-extensibility/kubebuilder) by [@javajon](https://github.com/javajon)
+There are a few choices if you would like to experiment with operators. I recommend going thorough [kubebuilder's quickstart](https://book.kubebuilder.io/quick-start.html).
+
+- use [my repository](https://github.com/Piotr1215/kubernetes-oparators) with a self-contained development environment if you have already a Kubernetes cluster and you would like to try something locally on your machine. Please note that this is a containerized environment, so other than Kubernetes and VS Code, you don't need anything else.
+
+- follow an excellent [Katacoda scenario](https://www.katacoda.com/javajon/courses/kubernetes-extensibility/kubebuilder) by [@javajon](https://github.com/javajon) if you don't want to install anything on your local machine and would rather prefer remote infrastructure.
 
 If you decided to use this repository, there are a few prerequisites:
 
@@ -237,12 +243,16 @@ If you decided to use this repository, there are a few prerequisites:
 
 The image will take a while to load as it pulls kubebuilder, Go binaries and other components, so please patient :watch:
 
+## Summary
+
+Kubernetes operators are difficult, take time to master and create maintenance challenges. However, if you find a good use case and can commit time and resources to master them, it will unlock additional powerful Kubernetes capabilities.
+
 ## Resources
 
 - [Kubernetes docs operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 - [CNCF Operators White Paper](https://github.com/cncf/tag-app-delivery/blob/master/operator-wg/whitepaper/Operator-WhitePaper_v1-0.md#)
 - [CNCF Blog controller for pod labels](https://kubernetes.io/blog/2021/06/21/writing-a-controller-for-pod-labels/)
-- [Great video](https://www.youtube.com/watch?v=08O9eLJGQRM&ab_channel=CloudNativeSkunkworks) explaining operators
+- [Video with hands on operator building](https://www.youtube.com/watch?v=08O9eLJGQRM&ab_channel=CloudNativeSkunkworks)
 - [Build a Kubernetes operator RedHat](https://developers.redhat.com/articles/2021/09/07/build-kubernetes-operator-six-steps?sc_cid=7013a000002pkdsAAA#)
 - [Intro to operators RedHat](https://developers.redhat.com/articles/2021/06/11/kubernetes-operators-101-part-1-overview-and-key-features#operators_extend_kubernetes_to_automate_tasks)
 - [Intro to operators IBM](https://developer.ibm.com/articles/how-operators-extend-kubernetes-functionality/)
