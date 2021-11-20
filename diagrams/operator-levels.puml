@@ -1,4 +1,4 @@
-@startuml operator-maturity-model
+@startuml operator-levels
 !theme spacelab
 
 skinparam nodesep 10
