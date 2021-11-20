@@ -49,67 +49,6 @@ There are 5 levels of operator maturity:
 
 ![operator-levels](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/operator-levels.puml&fmt=png)
 
-```plantuml
-@startuml operator-maturity-model
-!theme spacelab
-
-skinparam nodesep 10
-skinparam componentStyle rectangle
-skinparam defaultTextAlignment left
-'skinparam lineType ortho
-
-rectangle "Operator Levels" as levels {
-
-    component "Basic Install    " as level1
-    note bottom
-     **Helm, Ansible, Go**
-     - Simple installation
-     - Configuration
-    end note
-
-    component "Seamless Upgrades" as level2
-    note bottom
-     **Helm, Ansible, Go**
-     - Version upgrades
-     - Patches
-    end note
-
-    component "Full Lifecylce   " as level3
-    note bottom
-     **Ansible, Go**
-     - App lifecycle
-     - Storage
-     - Backup
-     - Recovery
-    end note
-
-    component "Deep Insights    " as level4
-    note bottom
-     **Ansible, Go**
-     - Observability
-     - Metrics
-     - Logging
-     - Telemetry
-    end note
-
-    component "Autopilot        " as level5
-    note bottom
-     **Ansible, Go**
-     - Auto-scaling
-     - Live configuration tuning
-     - Anomaly detection and remediation
-     - Finegraned node scheduling tuning
-    end note
-
-}
-
-level1 -[thickness=16]> level2
-level2 -[thickness=16]> level3
-level3 -[thickness=16]> level4
-level4 -[thickness=16]> level5
-@enduml
-```
-
 ## Operators in practice
 
 Should you start writing operators for everything? Obviously no, so when should you? Here are a few good use cases for operators
