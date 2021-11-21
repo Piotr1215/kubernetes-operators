@@ -56,7 +56,7 @@ Operators can be as simple as installing components onto a cluster up to much mo
 
 There are 5 levels of operator maturity:
 
-![operator-levels](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/operator-levels.puml&fmt=png)
+![operator-levels](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/operator-levels.puml&fmt=png)
 
 ## Operators in practice
 
