@@ -1,16 +1,31 @@
 @startuml operator-components
 'Icons
-''!include <kubernetes/k8s-sprites-unlabeled-25pct>
-!theme spacelab
+!include <kubernetes/k8s-sprites-unlabeled-25pct>
 
+'Style
+skinparam componentBackgroundColor white
+skinparam rectangleBackgroundColor white
 skinparam componentStyle rectangle
-'mainframe **Operator Components**
-rectangle " " as operator {
+skinparam nodesep 75
 
-    component "Custom Resource" as custom_resource
-    component "CRD" as crd
-    component "Controller" as controller
+rectangle "Kubernetes cluster" as operator {
 
+    node "Worker nodes" as nodes {
+
+        component "\t<color:darkblue><$deploy></color>\nCustom Controller" as controller
+        together {
+            component "<color:darkblue><$crd></color>\n   CRD" as crd
+            component "\t<color:darkblue><$pod></color>\nCustom Resource" as custom_resource
+        }
+    }
+    node "Control Plane" as control {
+
+        component "\t<color:darkblue><$deploy></color>\nController Manager" as k8s_controllerManager
+    }
 }
 
+'Relations'
+crd ..> custom_resource : Defines
+k8s_controllerManager -> controller : Reconcliles
+controller -> custom_resource : Observes
 @enduml
