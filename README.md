@@ -33,7 +33,9 @@ As you can see, control loops are at the core of how Kubernetes ensures state re
 
 The easiest way to understand operators is to think about them as software counterparts of human operators. Imagine someone performing tasks such as database backups, upgrades, schema changes etc. There is a lot of complex operational knowledge involved to do all those tasks correctly. What if something fails? Well, even more knowledge and experience is needed to troubleshoot and recover from an indecent.
 
-Now imagine that you have a complex software running on your cluster, something like [couchbase](https://operatorhub.io/operator/couchbase-enterprise), [apache spark](https://operatorhub.io/operator/radanalytics-spark) or even [prometheus](https://operatorhub.io/operator/prometheus).
+Now imagine that you have a complex software running on your cluster, something like [couchbase](https://operatorhub.io/operator/couchbase-enterprise), [apache spark](https://operatorhub.io/operator/radanalytics-spark) or even [prometheus](https://operatorhub.io/operator/prometheus). The knowledge required to properly operationalize all those components is encapsulated in operators.
+
+You might also find yourself on the provider end of the spectrum, and want to provide additional benefits to your customers. Writing and maintaining an operator is a fairly complex tasks, but if there is a use case, it's well worth the effort.
 
 Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/). In simple terms operator pattern automates operations performed typically by humans, such as:
 
