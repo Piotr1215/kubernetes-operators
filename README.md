@@ -1,20 +1,21 @@
 # Kubernetes Operators
 
-The true power of Kubernetes is not the ability to orchestrate containers, but rather it's extensible API and [Control Plane](https://containerjournal.com/kubeconcnc/kubernetes-true-superpower-is-its-control-plane/). Kubernetes operators are at the core of this extensibility.
-
-With containerization and container orchestration rapidly increasing
+With containerization and container orchestration rapidly increasing,
 
 > According to the [Cloud Native Survey from 2020](https://www.cncf.io/blog/2020/11/17/cloud-native-survey-2020-containers-in-production-jump-300-from-our-first-survey/), the usage of containers in production jumped **300%**
 
-The usage of tools like Kubernetes is only going to increase. There is a difference between using Kubernetes and being able to extend it.
+the usage of Kubernetes is only going to increase, but there is a difference between using Kubernetes and being able to extend it.
 
-Kubernetes is designed as a platform to build platforms and operators are the ultimate extensibility tools.
+Kubernetes is designed as **a platform to build platforms** and operators are the ultimate extensibility tools.
 
-In this article we will look at operator pattern, learn when it is appropriate to use an operator. Finally we will explore operator's component architecture.
+The true power of Kubernetes is not just the ability to orchestrate containers, but rather it's extensible API and [Control Plane](https://containerjournal.com/kubeconcnc/kubernetes-true-superpower-is-its-control-plane/). 
+Kubernetes operators and control loops are how the internal machinery of everyone's favorite container orchestrator works.
+
+In this article we will look at the operator pattern, learn when it is appropriate to use an operator. Finally we will explore operator's  architecture.
 
 ## Kubernetes Architecture
 
-Before we start learning about operators, let's get a quick refresher on Kubernetes architecture:
+Before we start looking into operators, let's get a quick refresher on Kubernetes architecture:
 
 ![k8s-architecture](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/kubernetes-architecture.puml&fmt=png)
 <p style="text-align: center;"><small>Kubernetes Architecture</small></p>
@@ -26,7 +27,13 @@ Some of the controllers on the diagram are:
 - controller manager which manages all the Kubernetes native control loops
 - cloud controller which enables cloud providers to plug in their infrastructure elements
 
+As you can see, control loops are at the core of how Kubernetes ensures state reconciliation and self-healing.
+
 ## Operators Overview
+
+The easiest way to understand operators is to think about them as software counterparts of human operators. Imagine someone performing tasks such as database backups, upgrades, schema changes etc. There is a lot of complex operational knowledge involved to do all those tasks correctly. What if something fails? Well, even more knowledge and experience is needed to troubleshoot and recover from an indecent.
+
+Now imagine that you have a complex software running on your cluster, something like [couchbase](https://operatorhub.io/operator/couchbase-enterprise), [apache spark](https://operatorhub.io/operator/radanalytics-spark) or even [prometheus](https://operatorhub.io/operator/prometheus).
 
 Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/). In simple terms operator pattern automates operations performed typically by humans, such as:
 
