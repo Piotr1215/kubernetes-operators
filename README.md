@@ -48,7 +48,7 @@ Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/co
 
 ### Architecture
 
-![operator-components](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/operator-components.puml&fmt=png)
+![operator-components](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/operator-components.puml&fmt=png)
 
 ### Maturity levels
 
