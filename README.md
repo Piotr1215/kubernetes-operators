@@ -48,6 +48,16 @@ Kubernetes operators follow the [operator pattern](https://kubernetes.io/docs/co
 
 ### Architecture
 
+Operators build on the Kubernetes architecture and all components are part of the Kubernetes standard building blocks. As you can see on the below simplified diagram, controller manager running on a control plane node is responsible for reconciliation and management of all controllers, built in and custom alike. Custom controller is just a reconciliation logic running as a program, written in any language, and deployed to a Kubernetes cluster.
+
+The simplest operator consists of:
+
+- a custom controller running in a pod controlled by a Deployment or StatefulSet
+- a CRD (Custom Resource Definition) defining schema for a custom resource
+- a custom resource which forms an API layer that users can manipulate to interact with the operator
+
+The custom resource follows the same semantics as other Kubernetes resources.
+
 ![operator-components](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Piotr1215/kubernetes-operators/master/diagrams/operator-components.puml&fmt=png)
 
 ### Maturity levels
@@ -117,7 +127,11 @@ The image will take a while to load as it pulls kubebuilder, Go binaries and oth
 
 Kubernetes operators are difficult, take time to master and create maintenance challenges. However, if you find a good use case and can commit time and resources to master them, it will unlock additional powerful Kubernetes capabilities.
 
+For me, the main takeaway from learning about operator was much deeper understanding of the Kubernetes architecture, but most importantly the realization that the true power of Kubernetes is in its extensible API and universal control plane.
+
 ## Resources
+
+Here are useful resources for further study.
 
 - [Kubernetes docs operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 - [CNCF Operators White Paper](https://github.com/cncf/tag-app-delivery/blob/master/operator-wg/whitepaper/Operator-WhitePaper_v1-0.md#)
